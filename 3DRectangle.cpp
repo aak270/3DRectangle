@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+/********structs*************/
+
 struct 3Dpoint{
 	double x;
 	double y;
@@ -11,6 +13,14 @@ struct 3DRectangle{
 };
 
 /********functions***********/
+
+void members(){
+	printf("Anggoro Rahardiyawan\n");
+	printf("Lek Bunheng");
+	printf("Prohim Tam");
+}
+
+/********main****************/
 
 int main(void) {
 	
