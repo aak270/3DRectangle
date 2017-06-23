@@ -10,9 +10,14 @@ struct point3D{
 
 //with all angle 90 degree
 struct rectangle3D{
+	//point placement
 	struct point3D a;
 	struct point3D b;
 	double height;
+	//angle value for base and edge
+	double angleA;	//base at point a
+	double angleG;	//base with edge at left side
+	double angleH;	//base with edge at right side
 };
 
 /********functions***********/
