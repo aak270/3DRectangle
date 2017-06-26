@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+
+
 /********structs*************/
 
 struct point3D{
@@ -20,6 +22,8 @@ struct rectangle3D{
 	double angleH;	//base with edge at right side
 };
 
+
+
 /********functions***********/
 
 //calculate the surface area for 3d rectangle
@@ -32,11 +36,28 @@ double getVolume(struct rectangle3D){
 	
 }
 
+
+/******constructor******/
+
+struct rectangle3D cube(){
+	
+}
+
+struct rectangle3D prism(){
+	
+}
+
+struct rectangle3D parallelepiped(){
+	
+}
+
 void members(){
 	printf("Anggoro Rahardiyawan\n");
-	printf("Lek Bunheng");
-	printf("Prohim Tam");
+	printf("Lek Bunheng\n");
+	printf("Prohim Tam\n");
 }
+
+
 
 /********main****************/
 
