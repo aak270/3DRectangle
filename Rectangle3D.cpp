@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 
 
@@ -16,7 +18,7 @@ struct rectangle3D{
 	struct point3D a;
 	struct point3D b;
 	double height;
-	//angle value for base and edge
+	//angle value for
 	double angleA;	//base at point a
 	double angleG;	//base with edge at left side
 	double angleH;	//base with edge at right side
@@ -37,19 +39,51 @@ double getVolume(struct rectangle3D){
 }
 
 
-/******constructor******/
+//\\\\\\\constructor///////\\
 
-struct rectangle3D cube(){
+struct rectangle3D* cube(struct point3D* pA, struct point3D* pB){
+	struct rectangle3D* obj = (struct rectangle3D*) malloc(sizeof(struct rectangle3D));
 	
+	if(fabs(pA->x - pB->x) != fabs(pA->y - pB->y)) return obj;
+	
+	double h = fabs(pA->x - pB->x);
+	
+	obj->a = *pA;
+	obj->b = *pB;
+	obj->height = h;
+	obj->angleA = 90;
+	obj->angleG = 90;
+	obj->angleH = 90;
+	
+	return obj;
 }
 
-struct rectangle3D prism(){
+struct rectangle3D* prism(struct point3D* pA, struct point3D* pB, double h){
+	struct rectangle3D* obj = (struct rectangle3D*) malloc(sizeof(struct rectangle3D));
 	
+	obj->a = *pA;
+	obj->b = *pB;
+	obj->height = h;
+	obj->angleA = 90;
+	obj->angleG = 90;
+	obj->angleH = 90;
+	
+	return obj;
 }
 
-struct rectangle3D parallelepiped(){
+struct rectangle3D* parallelepiped(struct point3D* pA, struct point3D* pB, double h, double aA, double aG, double aH){
+	struct rectangle3D* obj = (struct rectangle3D*) malloc(sizeof(struct rectangle3D));
 	
+	obj->a = *pA;
+	obj->b = *pB;
+	obj->height = h;
+	obj->angleA = aA;
+	obj->angleG = aG;
+	obj->angleH = aH;
+	
+	return obj;	
 }
+
 
 void members(){
 	printf("Anggoro Rahardiyawan\n");
@@ -62,6 +96,17 @@ void members(){
 /********main****************/
 
 int main(void) {
+	struct point3D a = {
+		5,
+		0,
+		0
+	};
+	struct point3D b = {
+		0,
+		5,
+		0
+	};
+	struct rectangle3D cube1 = *cube(&a, &b);
 	
 	return 0;
 }
