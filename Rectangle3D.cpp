@@ -18,10 +18,12 @@ struct rectangle3D{
 	struct point3D a;
 	struct point3D b;
 	double height;
-	//angle value for
-	double angleA;	//base at point a
-	double angleG;	//base with edge at left side
-	double angleH;	//base with edge at right side
+	/*
+	//using angle
+	double angleA;	
+	double angleG;	
+	double angleH;
+	*/
 };
 
 
@@ -39,7 +41,8 @@ double getVolume(struct rectangle3D){
 }
 
 
-//\\\\\\\constructor///////\\
+/*
+//------constructor--------\\
 
 struct rectangle3D* cube(struct point3D* pA, struct point3D* pB){
 	struct rectangle3D* obj = (struct rectangle3D*) malloc(sizeof(struct rectangle3D));
@@ -70,20 +73,7 @@ struct rectangle3D* prism(struct point3D* pA, struct point3D* pB, double h){
 	
 	return obj;
 }
-
-struct rectangle3D* parallelepiped(struct point3D* pA, struct point3D* pB, double h, double aA, double aG, double aH){
-	struct rectangle3D* obj = (struct rectangle3D*) malloc(sizeof(struct rectangle3D));
-	
-	obj->a = *pA;
-	obj->b = *pB;
-	obj->height = h;
-	obj->angleA = aA;
-	obj->angleG = aG;
-	obj->angleH = aH;
-	
-	return obj;	
-}
-
+*/
 
 void members(){
 	printf("Anggoro Rahardiyawan\n");
@@ -95,18 +85,42 @@ void members(){
 
 /********main****************/
 
-int main(void) {
-	struct point3D a = {
-		5,
-		0,
-		0
-	};
-	struct point3D b = {
-		0,
-		5,
-		0
-	};
-	struct rectangle3D cube1 = *cube(&a, &b);
+int main(int argc, char* argv[]) {
+	struct rectangle3D rect;
+	struct point3D A, B;
+	double h;
+	FILE *in_fp, *out_fp;	
+	
+	if (argc != 3){
+		printf("No input file or output file.");
+		exit(1);
+	}
+	
+	in_fp = fopen(argv[1], "r");
+    if (!in_fp){
+    	printf("Can't open %s\n", argv[1]);
+		exit(2);
+	}
+	
+    out_fp = fopen(argv[2], "w");
+    if (!out_fp){
+    	printf("Can't open %s\n", argv[2]);
+		exit(3);
+	}
+	
+	while (fscanf_s(in_fp, "%lf,%lf,%lf,%lf,%lf,%lf,%lf", &A.x, &A.y, &A.z, &B.x, &B.y, &B.z, &h) != EOF) {
+		rect.a = A;
+		rect.b = B;
+		rect.height = h;
+		
+		fprintf(out_fp, "Surface Area: %lf\n", getSurfaceArea(rect));
+		fprintf(out_fp, "Volume: %lf\n", getVolume(rect));
+	}
+	
+	if (fclose(fp) != 0)
+		printf("Error in closing file %s\n", argv[1]);
+	if (fclose(fp2) != 0)
+		printf("Error in closing file %s\n", argv[2]);
 	
 	return 0;
 }
