@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
+/*
+CMD usage:
+paste data file next to .exe
+>>>FileIO.exe Book1.csv output.txt
+*/
 
 
 /********structs*************/

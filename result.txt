@@ -1,0 +1,40 @@
+Surface Area: 421.300000
+Volume: 583.854000
+Surface Area: 52.620000
+Volume: 2.530000
+Surface Area: 49.620000
+Volume: 17.388000
+Surface Area: 93.820000
+Volume: 12.831000
+Surface Area: 205.060000
+Volume: 190.076000
+Surface Area: 191.420000
+Volume: 151.956000
+Surface Area: 89.040000
+Volume: 55.100000
+Surface Area: 101.200000
+Volume: 56.800000
+Surface Area: 22.560000
+Volume: 5.940000
+Surface Area: 159.940000
+Volume: 123.420000
+Surface Area: 21.600000
+Volume: 3.600000
+Surface Area: 1.640000
+Volume: 0.120000
+Surface Area: 127.720000
+Volume: 41.808000
+Surface Area: 35.680000
+Volume: 5.888000
+Surface Area: 41.380000
+Volume: 12.958000
+Surface Area: 56.500000
+Volume: 11.250000
+Surface Area: 4.400000
+Volume: 0.300000
+Surface Area: 66.080000
+Volume: 25.284000
+Surface Area: 16.440000
+Volume: 3.168000
+Surface Area: 39.340000
+Volume: 16.675000
