@@ -18,12 +18,6 @@ struct rectangle3D{
 	struct point3D a;
 	struct point3D b;
 	double height;
-	/*
-	//using angle
-	double angleA;	
-	double angleG;	
-	double angleH;
-	*/
 };
 
 
@@ -31,49 +25,30 @@ struct rectangle3D{
 /********functions***********/
 
 //calculate the surface area for 3d rectangle
-double getSurfaceArea(struct rectangle3D){
+//only work for the same z axis
+double getSurfaceArea(struct rectangle3D* rect){
+	double surfaceArea, l, w;
+	double h = rect->height;
 	
+	l = fabs(rect->a.x - rect->b.x);
+	w = fabs(rect->a.y - rect->b.y);
+	
+	surfaceArea = 2*(l*w+l*h+w*h);
+	return surfaceArea;
 }
 
 //calculate the volume for 3d rectangle
-double getVolume(struct rectangle3D){
+//only work for the same z axis
+double getVolume(struct rectangle3D* rect){
+	double volume, l, w;
+	double h = rect->height;
 	
+	l = fabs(rect->a.x - rect->b.x);
+	w = fabs(rect->a.y - rect->b.y);
+	
+	volume = l*w*h;
+	return volume;
 }
-
-
-/*
-//------constructor--------\\
-
-struct rectangle3D* cube(struct point3D* pA, struct point3D* pB){
-	struct rectangle3D* obj = (struct rectangle3D*) malloc(sizeof(struct rectangle3D));
-	
-	if(fabs(pA->x - pB->x) != fabs(pA->y - pB->y)) return obj;
-	
-	double h = fabs(pA->x - pB->x);
-	
-	obj->a = *pA;
-	obj->b = *pB;
-	obj->height = h;
-	obj->angleA = 90;
-	obj->angleG = 90;
-	obj->angleH = 90;
-	
-	return obj;
-}
-
-struct rectangle3D* prism(struct point3D* pA, struct point3D* pB, double h){
-	struct rectangle3D* obj = (struct rectangle3D*) malloc(sizeof(struct rectangle3D));
-	
-	obj->a = *pA;
-	obj->b = *pB;
-	obj->height = h;
-	obj->angleA = 90;
-	obj->angleG = 90;
-	obj->angleH = 90;
-	
-	return obj;
-}
-*/
 
 void members(){
 	printf("Anggoro Rahardiyawan\n");
@@ -108,18 +83,18 @@ int main(int argc, char* argv[]) {
 		exit(3);
 	}
 	
-	while (fscanf_s(in_fp, "%lf,%lf,%lf,%lf,%lf,%lf,%lf", &A.x, &A.y, &A.z, &B.x, &B.y, &B.z, &h) != EOF) {
+	while (fscanf(in_fp, "%lf,%lf,%lf,%lf,%lf,%lf,%lf", &A.x, &A.y, &A.z, &B.x, &B.y, &B.z, &h) != EOF) {
 		rect.a = A;
 		rect.b = B;
 		rect.height = h;
 		
-		fprintf(out_fp, "Surface Area: %lf\n", getSurfaceArea(rect));
-		fprintf(out_fp, "Volume: %lf\n", getVolume(rect));
+		fprintf(out_fp, "Surface Area: %lf\n", getSurfaceArea(&rect));
+		fprintf(out_fp, "Volume: %lf\n", getVolume(&rect));
 	}
 	
-	if (fclose(fp) != 0)
+	if (fclose(in_fp) != 0)
 		printf("Error in closing file %s\n", argv[1]);
-	if (fclose(fp2) != 0)
+	if (fclose(out_fp) != 0)
 		printf("Error in closing file %s\n", argv[2]);
 	
 	return 0;
