@@ -29,26 +29,32 @@ struct rectangle3D{
 /********functions***********/
 
 //calculate the surface area for 3d rectangle
-//only work for the same z axis
 double getSurfaceArea(struct rectangle3D* rect){
 	double surfaceArea, l, w;
 	double h = rect->height;
 	
-	l = fabs(rect->a.x - rect->b.x);
-	w = fabs(rect->a.y - rect->b.y);
+	double delX = fabs(rect->a.x - rect->b.x);
+	double delY = fabs(rect->a.y - rect->b.y);
+	double delZ = fabs(rect->a.z - rect->b.z);
+	
+	l = sqrt(pow(delX, 2) + pow(delZ, 2));
+	w = sqrt(pow(delY, 2) + pow(delZ, 2));
 	
 	surfaceArea = 2*(l*w+l*h+w*h);
 	return surfaceArea;
 }
 
 //calculate the volume for 3d rectangle
-//only work for the same z axis
 double getVolume(struct rectangle3D* rect){
 	double volume, l, w;
 	double h = rect->height;
 	
-	l = fabs(rect->a.x - rect->b.x);
-	w = fabs(rect->a.y - rect->b.y);
+	double delX = fabs(rect->a.x - rect->b.x);
+	double delY = fabs(rect->a.y - rect->b.y);
+	double delZ = fabs(rect->a.z - rect->b.z);
+	
+	l = sqrt(pow(delX, 2) + pow(delZ, 2));
+	w = sqrt(pow(delY, 2) + pow(delZ, 2));
 	
 	volume = l*w*h;
 	return volume;
